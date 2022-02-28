@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <h1>Demo Mene Booking system</h1>
+  <div id="demo"></div>
+
+  <script src="../dist/src/index.js" type="module"></script>
+  <script type="module">
+    import { html, render } from 'lit';
+
+    const floors = [
+      {
+        id: '1',
+        name: 'Primera Planta',
+        places: [
+          [
+            {
+              id: '1',
+              status: 'DISABLED'
+            },{
+              id: '2',
+              status: 'AVAIBLE',
+            },
+            {
+              id: '3',
+              status: 'AVAIBLE',
+            },
+            {
+              id: '4',
+              status: 'RESERVED',
+            }
+          ],
+          [
+            {
+              id: '5',
+              status: 'AVAIBLE'
+            },{
+              id: '6',
+              status: 'AVIABLE',
+            },
+            {
+              id: '7',
+              status: 'AVIABLE',
+            }
+          ]
+        ]
+      },
+      {
+        id: '1',
+        name: 'Segunda planta',
+        places: [
+          [
+            {
+              id: '8',
+              status: 'AVAIBLE'
+            },{
+              id: '9',
+              status: 'AVIABLE',
+            },
+            {
+              id: '10',
+              status: 'AVIABLE',
+            }
+          ],
+        ]
+      }
+    ]
+
+    render(
+      html`
+        <mene-booking .floors=${floors}>
+        </mene-booking>
+      `,
+      document.querySelector('#demo')
+    );
+  </script>
+</body>
+</html>
