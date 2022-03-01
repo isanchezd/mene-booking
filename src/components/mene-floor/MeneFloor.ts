@@ -14,15 +14,11 @@ export class MeneFloor extends LitElement {
   @property({type: String})
   id: string = '';
 
-  @property({type: String})
-  name?: string = '';
-
   @property({type: Array})
   places: Place[][] = [];
 
   render() {
     return html `
-      <h3>${this.name}</h3>
       <div>
         ${this.places.map(
           (row) =>

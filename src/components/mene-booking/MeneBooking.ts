@@ -10,9 +10,17 @@ export class MeneBooking extends LitElement {
 
   render() {
     return html `
+
       ${this.floors.map(
         (item) =>
-        html `<mene-floor .id=${item.id} .name=${item.name} .places=${item.places}></mene-floor>`
+        html `
+        <div>
+          <h3>${item.name}</h3>
+        </div>
+        <div>
+          <mene-floor .id=${item.id} .places=${item.places}></mene-floor>
+        </div>
+        `
       )}
     `;
   }
