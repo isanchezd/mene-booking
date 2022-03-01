@@ -16,6 +16,8 @@
   <script type="module">
     import { html, render } from 'lit';
 
+    window.addEventListener('place-status-changed', (detail) => console.log(detail));
+
     const floors = [
       {
         id: '1',

@@ -12,7 +12,8 @@ export class MenePlace extends LitElement {
   status: string = Status.avaible;
 
   onChange() {
-    this.status = Status.selected ? Status.avaible : Status.selected ;
+    this.status = this.status === Status.selected ? Status.avaible : Status.selected ;
+    this.#emitPlaceStatusChanged();
   }
 
   render() {
@@ -26,4 +27,14 @@ export class MenePlace extends LitElement {
   }
 
 
+  #emitPlaceStatusChanged() {
+    this.dispatchEvent(new CustomEvent('place-status-changed', {
+      detail: {
+        id: this.id,
+        status: this.status
+      },
+      bubbles: true,
+      composed: true
+    }));
+  }
 }
