@@ -1,28 +1,28 @@
-import { html, LitElement } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { Floor } from '../../interfaces/floor.interface';
+import { Place } from '../../interfaces/place.interface';
 
 @customElement('mene-booking')
 export class MeneBooking extends LitElement {
+  static styles = css`
+    :host > div {
+      display: flex;
+      flex-direction: column;
+    }
+  `;
 
-  @property({type: Array})
-  floors: Floor[] = [];
+    @property({type: Array})
+    places: Place[][] = [];
 
-  render() {
-    return html `
-
-      ${this.floors.map(
-        (item) =>
-        html `
+    render() {
+      return html `
         <div>
-          <h3>${item.name}</h3>
+          ${this.places.map(
+            (row) =>
+            html `<mene-row .places=${row}></mene-row>`
+          )}
         </div>
-        <div>
-          <mene-floor .id=${item.id} .places=${item.places}></mene-floor>
-        </div>
-        `
-      )}
-    `;
-  }
+      `;
+    }
 
 }

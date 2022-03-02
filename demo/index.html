@@ -18,11 +18,7 @@
 
     window.addEventListener('place-status-changed', (detail) => console.log(detail));
 
-    const floors = [
-      {
-        id: '1',
-        name: 'Primera Planta',
-        places: [
+    const floor1 = [
           [
             {
               id: '1',
@@ -54,31 +50,48 @@
             }
           ]
         ]
-      },
-      {
-        id: '1',
-        name: 'Segunda planta',
-        places: [
+
+
+    const floor2 = [
           [
             {
               id: '8',
-              status: 'AVAIBLE'
+              status: 'DISABLED'
             },{
               id: '9',
-              status: 'AVIABLE',
+              status: 'AVAIBLE',
             },
             {
               id: '10',
-              status: 'AVIABLE',
+              status: 'AVAIBLE',
+            },
+            {
+              id: '11',
+              status: 'RESERVED',
             }
           ],
+          [
+            {
+              id: '12',
+              status: 'AVAIBLE'
+            },{
+              id: '13',
+              status: 'AVIABLE',
+            },
+            {
+              id: '14',
+              status: 'AVIABLE',
+            }
+          ]
         ]
-      }
-    ]
-
     render(
       html`
-        <mene-booking .floors=${floors}>
+        <h1>Primera Planta</h1>
+        <mene-booking .places=${floor1}>
+        </mene-booking>
+
+        <h1>Segunda Planta</h1>
+        <mene-booking .places=${floor2}>
         </mene-booking>
       `,
       document.querySelector('#demo')
