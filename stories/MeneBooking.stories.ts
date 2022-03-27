@@ -85,13 +85,13 @@ Empty.args = {
     [
       {
         id: '1',
-        status: Status.void
+        status: ''
       }
     ],
     [
       {
         id: '2',
-        status: Status.void
+        status: ''
       }
     ]
   ]

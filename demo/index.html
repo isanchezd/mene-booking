@@ -1,101 +1,88 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-GB">
-<head>
-  <meta charset="utf-8">
-  <style>
-    body {
-      background: #fafafa;
-    }
-  </style>
-</head>
-<body>
-  <h1>Demo Mene Booking system</h1>
-  <div id="demo"></div>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      .flex-center {
+        display: flex;
+        justify-content: center;
+      }
 
-  <script src="../dist/src/index.js" type="module"></script>
-  <script type="module">
-    import { html, render } from 'lit';
+      .text-center {
+        text-align: center
+      }
 
-    window.addEventListener('place-status-changed', (detail) => console.log(detail));
+      .theater {}
 
-    const floor1 = [
-          [
-            {
-              id: '1',
-              status: 'DISABLED'
-            },{
-              id: '2',
-              status: 'AVAIBLE',
-            },
-            {
-              id: '3',
-              status: 'AVAIBLE',
-            },
-            {
-              id: '4',
-              status: 'RESERVED',
-            }
-          ],
-          [
-            {
-              id: '5',
-              status: 'AVAIBLE'
-            },{
-              id: '6',
-              status: 'AVIABLE',
-            },
-            {
-              id: '7',
-              status: 'AVIABLE',
-            }
-          ]
-        ]
+      .floor {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Demo Mene Booking system</h1>
+      <hr />
+    </header>
+    <main class="flex-center">
+      <div id="demo"></div>
+    </main>
+    <footer>
+      <button onclick="save()">Guardar Cambios</button>
+    </footer>
+
+    <script src="../dist/src/index.js" type="module"></script>
+    <script type="module">
+      import { html, render } from 'lit';
+      import { Mock } from './mocks.js';
+
+      let floor1 = [...Mock.floor1];
+      let floor2 = [...Mock.floor2];
+
+      function updateList(list) {
+        return list.map(element => element.map(item => ({
+          id: item.id,
+          status: item.status === 'SELECTED' ? 'RESERVED': item.status
+        })));
+      }
 
 
-    const floor2 = [
-          [
-            {
-              id: '8',
-              status: 'DISABLED'
-            },{
-              id: '9',
-              status: 'AVAIBLE',
-            },
-            {
-              id: '10',
-              status: 'AVAIBLE',
-            },
-            {
-              id: '11',
-              status: 'RESERVED',
-            }
-          ],
-          [
-            {
-              id: '12',
-              status: 'AVAIBLE'
-            },{
-              id: '13',
-              status: 'AVIABLE',
-            },
-            {
-              id: '14',
-              status: 'AVIABLE',
-            }
-          ]
-        ]
-    render(
-      html`
-        <h1>Primera Planta</h1>
-        <mene-booking .places=${floor1}>
-        </mene-booking>
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      function save() {
+        floor1 = updateList(floor1);
+        floor2 = updateList(floor2);
+      }
 
-        <h1>Segunda Planta</h1>
-        <mene-booking .places=${floor2}>
-        </mene-booking>
-      `,
-      document.querySelector('#demo')
-    );
-  </script>
-</body>
+
+      window.addEventListener('place-status-changed', () => {
+        console.log('yep');
+      });
+
+
+      render(
+        html`
+          <section class="theater">
+            <div>
+              <h3 class="text-center">Escenario</h3>
+            </div>
+            <hr />
+            <div>
+              <h3>Patio</h3>
+              <div class="floor flex-center">
+                <mene-booking .places=${floor1}> </mene-booking>
+              </div>
+            </div>
+            <hr />
+            <div>
+              <h3>Entresuelo</h3>
+              <div class="floor flex-center">
+                <mene-booking .places=${floor2}> </mene-booking>
+              </div>
+            </div>
+          </section>
+        `,
+        document.querySelector('#demo')
+      );
+    </script>
+  </body>
 </html>

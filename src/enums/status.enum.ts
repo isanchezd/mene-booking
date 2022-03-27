@@ -3,6 +3,5 @@ export enum Status {
   avaible = 'AVAIBLE',
   selected = 'SELECTED',
   reserved = 'RESERVED',
-  disabled = 'DISABLED',
-  void = 'VOID'
+  disabled = 'DISABLED'
 }

@@ -8,6 +8,12 @@ export class MeneRow extends LitElement {
     :host {
       display: flex
     }
+
+    :host > .void {
+      opacity: 0;
+      pointer-events: none;
+      width: 20px;
+    }
   `;
 
   @property({type: Array})
@@ -15,8 +21,9 @@ export class MeneRow extends LitElement {
 
   render() {
     return html `
-      ${this.places.map(place =>
-        html `<mene-place .id=${place.id} .status=${place.status}> </mene-place>`
+      ${this.places.map(place => place.status ?
+               html `<mene-place .id=${place.id} .status=${place.status}> </mene-place>` :
+               html `<span class="void"></span>`
       )}
     `;
   }
