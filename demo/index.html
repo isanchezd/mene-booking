@@ -12,26 +12,11 @@
         text-align: center
       }
 
-      .theater {}
 
       .floor {
         display: flex;
       }
     </style>
-  </head>
-  <body>
-    <header>
-      <h1>Demo Mene Booking system</h1>
-      <hr />
-    </header>
-    <main class="flex-center">
-      <div id="demo"></div>
-    </main>
-    <footer>
-      <button onclick="save()">Guardar Cambios</button>
-    </footer>
-
-    <script src="../dist/src/index.js" type="module"></script>
     <script type="module">
       import { html, render } from 'lit';
       import { Mock } from './mocks.js';
@@ -47,17 +32,23 @@
       }
 
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       function save() {
+        console.log('before update', floor1);
         floor1 = updateList(floor1);
         floor2 = updateList(floor2);
+
+        console.log('after update', floor1);
       }
 
 
-      window.addEventListener('place-status-changed', () => {
-        console.log('yep');
+      window.addEventListener('placeStatusChanged', () => {
+        console.log(floor1);
       });
 
+
+      document.querySelector('#save-button').addEventListener('click', () => {
+        save();
+      })
 
       render(
         html`
@@ -84,5 +75,20 @@
         document.querySelector('#demo')
       );
     </script>
+  </head>
+  <body>
+    <header>
+      <h1>Demo Mene Booking system</h1>
+      <hr />
+    </header>
+    <main class="flex-center">
+      <div id="demo"></div>
+    </main>
+    <footer>
+      <button onclick="save()">Guardar Cambios</button>
+    </footer>
+
+    <script src="../dist/src/index.js" type="module"></script>
+
   </body>
 </html>
