@@ -79,7 +79,7 @@ export class MeneRow extends LitElement {
 
     places.forEach((place) => {
       row.push(place.status ?
-        html `<mene-place .id=${place.id} .status=${place.status} @placeStatusChanged=${this.onPlaceStatusChanged}></mene-place>` :
+        html `<mene-place .place="${place}" @placeStatusChanged=${this.onPlaceStatusChanged}></mene-place>` :
         html `<span class="void"></span>`
       )
     });

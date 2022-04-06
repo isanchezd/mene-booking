@@ -1,6 +1,7 @@
 import { html, LitElement, TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Status } from '../../enums/status.enum';
+import { Place } from '../../interfaces/place.interface';
 
 
   /**
@@ -17,20 +18,12 @@ import { Status } from '../../enums/status.enum';
 export class MenePlace extends LitElement {
 
   /**
-   * Place Id
+   * Place Item
    *
-   * @type {String}
+   * @type {Object<Place>}
    */
-  @property({type: String})
-  id: string = '0';
-
-  /**
-   * Status
-   *
-   * @type {String}
-   */
-  @property({type: String})
-  status: string = Status.avaible;
+  @property({type: Object})
+  place: Place = {} as Place;
 
   /**
    * Event handler method on change`.
@@ -38,8 +31,7 @@ export class MenePlace extends LitElement {
    * @return {void}
    */
   onChange(): void {
-    this.status = this.status === Status.selected ? Status.avaible : Status.selected ;
-    this.#emitPlaceStatusChanged(this.id, this.status);
+    this.place.status = this.place.status === Status.selected ? Status.avaible : Status.selected ;
   }
 
   /**
@@ -49,27 +41,10 @@ export class MenePlace extends LitElement {
   render(): TemplateResult {
     return html`
     <input type="checkbox"
-    ?disabled=${ this.status === Status.disabled || this.status === Status.reserved }
-    ?checked=${ this.status === Status.reserved }
+    ?disabled=${ this.place.status === Status.disabled || this.place.status === Status.reserved }
+    ?checked=${ this.place.status === Status.reserved }
     .value=${ this.id }
     @change=${ this.onChange }>`;
   }
 
-  /**
-   * Method to emit a placeStatusChanged event`.
-   * @param {String} id Place identifier
-   * @param {String} id Status place
-   * @return {void}
-   */
-  #emitPlaceStatusChanged(id: string, status: string): void {
-    const detail = {
-        id,
-        status
-    };
-    this.dispatchEvent(new CustomEvent('placeStatusChanged', {
-      detail,
-      bubbles: true,
-      composed: true
-    }));
-  }
 }
