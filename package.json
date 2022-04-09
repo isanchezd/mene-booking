@@ -1,7 +1,7 @@
 {
   "name": "mene-booking",
   "description": "Webcomponent mene-booking following open-wc recommendations",
-  "license": "MIT",
+  "license": "Apache license 2.0",
   "author": "mene-booking",
   "version": "1.0.0",
   "main": "dist/src/index.js",
