@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-GB">
-  <head>
-    <meta charset="utf-8" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Mene Booking</title>
     <style>
       .flex-center {
         display: flex;
@@ -17,9 +21,21 @@
         display: flex;
       }
     </style>
-    <script type="module">
+</head>
+<body>
+  <header>
+      <h1>Mene Booking system</h1>
+      <hr />
+    </header>
+    <main class="flex-center">
+      <div id="demo"></div>
+    </main>
+    <footer>
+      <button id="save-button">Guardar Cambios</button>
+    </footer>
+     <script type="module">
       import { html, render } from 'lit';
-      import { Mock } from './mocks.js';
+      import { Mock } from './data/mocks.js';
 
       const floor1 = [...Mock.floor1];
       const floor2 = [...Mock.floor2];
@@ -72,20 +88,6 @@
         document.querySelector('#demo')
       );
     </script>
-  </head>
-  <body>
-    <header>
-      <h1>Demo Mene Booking system</h1>
-      <hr />
-    </header>
-    <main class="flex-center">
-      <div id="demo"></div>
-    </main>
-    <footer>
-      <button id="save-button">Guardar Cambios</button>
-    </footer>
-
-    <script src="../dist/src/index.js" type="module"></script>
-
-  </body>
+    <script type="module" src="/src/index.ts"></script>
+</body>
 </html>

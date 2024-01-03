@@ -2,8 +2,6 @@ import { css, html, LitElement, TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Place } from '../../interfaces/place.interface';
 
-
-
   /**
    * Mene-row
    *
