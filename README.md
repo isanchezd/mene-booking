@@ -1,5 +1,10 @@
 # \<mene-booking>
 
+
+## Description
+
+This repository contains the source code of a POC to test the lit element library and show how to use it to implement some kind a logic implement a reservation places system. This code only contains learning proposal and shouldn´t be used in production environments.
+
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
 ## Installation
